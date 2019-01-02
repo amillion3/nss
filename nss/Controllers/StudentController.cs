@@ -20,14 +20,14 @@ namespace nss.Controllers
             _storage = new StudentStorage();
         }
         
-        // GET: api/NSS
+        // GET: api/student
         [HttpGet]
         public IActionResult GetAllStudents()
         {
             return Ok(_storage.GetAllStudents());
         }
 
-        // GET: api/NSS/5
+        // GET: api/student/5
         [HttpGet("{id}")]
         public IActionResult GetStudent(int id)
         {
