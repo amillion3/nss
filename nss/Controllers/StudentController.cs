@@ -4,25 +4,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using nss.Models;
+using nss.Storage;
 
 namespace nss.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NSSController : ControllerBase
+    public class StudentController : ControllerBase
     {
+        private readonly StudentStorage _storage;
+
+        public StudentController()
+        {
+            _storage = new StudentStorage();
+        }
+        
         // GET: api/NSS
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult GetAllStudents()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_storage.GetAllStudents());
         }
 
         // GET: api/NSS/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public IActionResult GetStudent(int id)
         {
-            return "value";
+            return Ok(_storage.GetStudent(id));
         }
 
         // POST: api/NSS
