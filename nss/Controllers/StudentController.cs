@@ -12,13 +12,23 @@ namespace nss.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentController : ControllerBase
+    public class StudentController : Controller
     {
-        public readonly StudentStorage _storage;
+        //public readonly StudentStorage _storage;
 
-        public StudentController()
+        //public StudentController()
+        //{
+        //    _storage = new StudentStorage();
+        //}
+
+        public StudentStorage _storage = new StudentStorage();
+
+        [HttpGet]
+        public IActionResult Index()
         {
-            _storage = new StudentStorage();
+            List<Student> students = new List<Student>();
+            students = _storage.GetAllStudents().ToList();
+            return View(students);
         }
         
         // GET: api/student
