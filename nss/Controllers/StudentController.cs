@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using nss.Models;
 using nss.Storage;
 
@@ -13,7 +14,7 @@ namespace nss.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        private readonly StudentStorage _storage;
+        public readonly StudentStorage _storage;
 
         public StudentController()
         {
